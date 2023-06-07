@@ -1,0 +1,20 @@
+<!-- <ion-content>
+  <div id="container">
+ <img src="{{imageSource}}" style="width: 400px;"> 
+    <ion-button (click)="takePicture()">Camera</ion-button>
+  </div>
+</ion-content> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tab 2</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <img src="{{imageSource}}" style="width: 400px;"> 
+    <ion-fab-button (click)="takePicture()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
