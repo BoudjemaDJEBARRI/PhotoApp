@@ -7,29 +7,25 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   styleUrls: ['./take-photo.page.scss'],
 })
 export class TakePhotoPage implements OnInit {
+  
+  constructor() { }
+  ngOnInit() { }
 
   imageSource : any;
-
   takePicture = async () => {
     const image = await Camera.getPhoto({
       quality: 100,
       allowEditing: true,
       resultType: CameraResultType.Uri,
       source : CameraSource.Prompt
-      // resultType: CameraResultType.DataUrl,
-      // resultType: CameraResultType.Base64,
     });
+
+    this.imageSource = image.webPath;
+  } 
+}
+
+// resultType: CameraResultType.DataUrl,
+    // resultType: CameraResultType.Base64,
     // this.imageSource = image.dataUrl;
     // this.imageSource = image.base64String;
     // console.log(this.imageSource)
-
-    this.imageSource = image.webPath;
-
-  }
-  
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
