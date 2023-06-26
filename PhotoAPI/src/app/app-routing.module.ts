@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'indexed-dbphoto',
+    loadChildren: () => import('./indexed-dbphoto/indexed-dbphoto.module').then( m => m.IndexedDBPhotoPageModule)
+  },
 ];
 
 @NgModule({

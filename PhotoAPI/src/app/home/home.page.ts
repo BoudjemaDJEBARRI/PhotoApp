@@ -27,24 +27,15 @@
 
 // Store the image with the ImageStorageService
 // if (image && image.webPath) {
-//this.imageSource = image.webPath;
-//this.storeImage(image.webPath);
+    // this.imageStorageService.storeImage(image.webPath);
 
 
 
-// async storeImage(imageUrl: any) {
-//   try {
-//     await this.imageStorageService.storeImage(imageUrl);
-//     console.log('Image stored successfully.');
-//   } catch (error) {
-//     console.error('Error storing image:', error);
-//   }
-// }
 
 
 
 import { Component } from '@angular/core';
-import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { ImageStorageService } from '../image-storage.service';
 
 @Component({
@@ -53,7 +44,7 @@ import { ImageStorageService } from '../image-storage.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  //imageSource: string | undefined;
+  imageSource: string | undefined;
 
   constructor(private imageStorageService: ImageStorageService) { }
 
@@ -66,7 +57,18 @@ export class HomePage {
       source: CameraSource.Prompt
     });
 
-    await this.imageStorageService.storeImage(image.webPath);
+    // await this.imageStorageService.storeImage(image.webPath);
+    this.imageSource = image.webPath;
+
   }
 
-};
+  async storeImage(imageUrl: any) {
+  try {
+    await this.imageStorageService.storeImage(imageUrl);
+    console.log('Image stored successfully.');
+  } catch (error) {
+    console.error('Error storing image:', error);
+  }
+}
+
+}

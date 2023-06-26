@@ -32,7 +32,7 @@
 
 
 import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage-angular';
 
 @Injectable({
   providedIn: 'root',
@@ -40,10 +40,8 @@ import { Storage } from '@ionic/storage';
 
 export class ImageStorageService {
   private storageKey = 'storedImage';
-  private storage1: Storage | null = null;
 
-  constructor(private storage: Storage) {
-  }
+  constructor(private storage: Storage) {}
 
   storeImage(imageUrl: string | undefined): Promise<void> {
     return this.storage.set(this.storageKey, imageUrl);
@@ -56,4 +54,33 @@ export class ImageStorageService {
   clearImage(): Promise<void> {
     return this.storage.remove(this.storageKey);
   }
+
+  //  private storageKey = 'storedImage';
+
+  // constructor(private storage: Storage) {
+  //   this.createDatabase(); // Create the database when the service is initialized
+  // }
+
+  // private async createDatabase(): Promise<void> {
+  //   // Check if the database already exists
+  //   const isDatabaseCreated = await this.storage.get('databaseCreated');
+
+  //   if (!isDatabaseCreated) {
+  //     // Create the database and mark it as created
+  //     await this.storage.create();
+  //     await this.storage.set('databaseCreated', true);
+  //   }
+  // }
+
+  // async storeImage(imageUrl: string | undefined): Promise<void> {
+  //   await this.storage.set(this.storageKey, imageUrl);
+  // }
+
+  // async getImage(): Promise<string | null> {
+  //   return this.storage.get(this.storageKey);
+  // }
+
+  // async clearImage(): Promise<void> {
+  //   await this.storage.remove(this.storageKey);
+  // }
 }
